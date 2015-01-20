@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Nemesarial/hipchat-message/issues"
   },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
   "homepage": "https://github.com/Nemesarial/hipchat-message"
 }
