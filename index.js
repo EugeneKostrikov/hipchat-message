@@ -1,5 +1,4 @@
-var Curl = require('node-curl/lib/Curl');
-var curl = new Curl();
+var request = require('request');
 var _ = require('lodash');
 
 
@@ -17,7 +16,7 @@ var Hipchat = function (options) {
         var self = this;
         self.defaults = {
             url   : 'https://api.hipchat.com/v1/rooms/message?auth_token=[auth_token]',
-            data  : 'room_id=[room_id]&from=[from]&message=[message]&message_format=[format]&color=[color]&notify=[notify]',
+            //data  : 'room_id=[room_id]&from=[from]&message=[message]&message_format=[format]&color=[color]&notify=[notify]',
             color : 'gray',
             format: 'html'
         };
@@ -37,7 +36,15 @@ var Hipchat = function (options) {
          * @returns {*}
          */
         self.getData = function (config) {
-            return self.parse(self.defaults.data, _.assign({}, options, config || {}));
+            //return self.parse(self.defaults.data, _.assign({}, options, config || {}));
+            return {
+                room_id:config.room_id,
+                from:config.from,
+                message:config.message,
+                message_format:config.format,
+                color:config.color,
+                notify:config.notify
+            };
         };
 
         /**
@@ -66,10 +73,8 @@ var Hipchat = function (options) {
 
         var url = pvt.getUrl(config);
         var data = pvt.getData(config);
-        curl.setopt('POST', 1);
-        curl.setopt('POSTFIELDS', data);
-        curl.setopt('URL', url);
-        curl.perform();
+
+        request.post(url,{form:data});
     };
 
     /**

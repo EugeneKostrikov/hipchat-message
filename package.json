@@ -1,6 +1,6 @@
 {
   "name": "hipchat-message",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Send a simple Hipchat Message",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "lodash": "^2.4.1",
-    "node-curl": "^0.3.3"
+    "request": "^2.51.0"
   },
   "homepage": "https://github.com/Nemesarial/hipchat-message",
   "gitHead": "4897bfd3f323caab5cb7396bd43a46088d712656",
