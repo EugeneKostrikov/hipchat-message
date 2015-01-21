@@ -16,6 +16,8 @@ This extension does not do any more than just that - send an html message to a H
         'from'      : 'hipchat-message',
         title       : '<strong>Some Title</strong>',
         format      : 'html',
+    },function(){
+        console.log('call completed')
     });
 
     hipchat.info("Popup gray message",true);
@@ -25,22 +27,22 @@ This extension does not do any more than just that - send an html message to a H
 
 
 ## Methods
-### .info( message:String, notify:boolean )
+### .info( message:String, notify:boolean , callback )
 Display gray information message
 
-### .warn( message:String, notify:boolean )
+### .warn( message:String, notify:boolean , callback )
 Display yellow warning message
 
-### .success( message:String, notify:boolean )
+### .success( message:String, notify:boolean , callback )
 Display green warning message
 
-### .error( message:String, notify:boolean )
+### .error( message:String, notify:boolean , callback )
 Display red error message
 
-### .message( message:String, config:Object, notify:boolean )
+### .message( message:String, config:Object, notify:boolean , callback )
 Display red error message
 
-### .notify( config:Object )
+### .notify( config:Object , callback )
 Display red error message
 
 
