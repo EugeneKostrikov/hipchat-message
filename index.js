@@ -38,12 +38,12 @@ var Hipchat = function (options) {
         self.getData = function (config) {
             //return self.parse(self.defaults.data, _.assign({}, options, config || {}));
             return {
-                room_id:config.room_id,
-                from:config.from,
-                message:config.message,
-                message_format:config.format,
-                color:config.color,
-                notify:config.notify
+                room_id       : config.room_id,
+                from          : config.from,
+                message       : config.message,
+                message_format: config.format,
+                color         : config.color,
+                notify        : config.notify
             };
         };
 
@@ -68,13 +68,18 @@ var Hipchat = function (options) {
      * basic Notify function (low level access)
      * @param config
      */
-    this.notify = function (config) {
+    this.notify = function (config, cb) {
         var config = _.assign({}, pvt.defaults, options, config);
+
+        if (typeof(cb) !== 'function') {
+            cb = function () {
+            };
+        }
 
         var url = pvt.getUrl(config);
         var data = pvt.getData(config);
 
-        request.post(url,{form:data});
+        request.post(url, {form: data}, cb);
     };
 
     /**
@@ -83,7 +88,7 @@ var Hipchat = function (options) {
      * @param settings
      * @param notify
      */
-    this.message = function (message, settings, notify) {
+    this.message = function (message, settings, notify, cb) {
         if (typeof(settings) !== 'object') {
             settings = {};
         }
@@ -94,7 +99,7 @@ var Hipchat = function (options) {
             settings.notify = (!!notify) ? '1' : '0';
         }
 
-        this.notify(settings);
+        this.notify(settings, cb);
     };
 
     /**
@@ -102,8 +107,8 @@ var Hipchat = function (options) {
      * @param message
      * @param notify
      */
-    this.info = function (message, notify) {
-        this.message(message, {color: 'gray'}, notify);
+    this.info = function (message, notify, cb) {
+        this.message(message, {color: 'gray'}, notify, cb);
     };
 
     /**
@@ -111,8 +116,8 @@ var Hipchat = function (options) {
      * @param message
      * @param notify
      */
-    this.success = function (message, notify) {
-        this.message(message, {color: 'green'}, notify);
+    this.success = function (message, notify, cb) {
+        this.message(message, {color: 'green'}, notify, cb);
     };
 
     /**
@@ -120,8 +125,8 @@ var Hipchat = function (options) {
      * @param message
      * @param notify
      */
-    this.warn = function (message, notify) {
-        this.message(message, {color: 'yellow'}, notify);
+    this.warn = function (message, notify, cb) {
+        this.message(message, {color: 'yellow'}, notify, cb);
     };
 
     /**
@@ -129,8 +134,8 @@ var Hipchat = function (options) {
      * @param message
      * @param notify
      */
-    this.error = function (message, notify) {
-        this.message(message, {color: 'red'}, notify);
+    this.error = function (message, notify, cb) {
+        this.message(message, {color: 'red'}, notify, cb);
     };
 };
 
