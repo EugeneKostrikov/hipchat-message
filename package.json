@@ -1,6 +1,6 @@
 {
   "name": "hipchat-message",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Send a simple Hipchat Message",
   "main": "index.js",
   "scripts": {
