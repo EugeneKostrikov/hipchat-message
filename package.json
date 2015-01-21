@@ -1,6 +1,6 @@
 {
   "name": "hipchat-message",
-  "version": "0.1.3",
+  "version": "0.1.3-docs",
   "description": "Send a simple Hipchat Message",
   "main": "index.js",
   "scripts": {
@@ -46,6 +46,5 @@
     "tarball": "http://registry.npmjs.org/hipchat-message/-/hipchat-message-0.1.0.tgz"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/hipchat-message/-/hipchat-message-0.1.0.tgz",
-  "readme": "README.md"
+  "_resolved": "https://registry.npmjs.org/hipchat-message/-/hipchat-message-0.1.0.tgz"
 }
