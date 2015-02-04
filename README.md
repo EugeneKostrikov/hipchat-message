@@ -1,4 +1,7 @@
 # hipchat-message
+[![NPM](https://nodei.co/npm/hipchat-message.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/hipchat-message/)
+
+
 Send a simple Hipchat Message
 
 This extension does not do any more than just that - send an html message to a Hipchat room.
