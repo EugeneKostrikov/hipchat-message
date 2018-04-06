@@ -15,10 +15,20 @@ var Hipchat = function (options) {
     var pvt = new function () {
         var self = this;
         self.defaults = {
-            url   : 'https://api.hipchat.com/v1/rooms/message?auth_token=[auth_token]',
+            host  : 'https://api.hipchat.com',
+            url   : '/v1/rooms/message?auth_token=[auth_token]',
             //data  : 'room_id=[room_id]&from=[from]&message=[message]&message_format=[format]&color=[color]&notify=[notify]',
             color : 'gray',
             format: 'html'
+        };
+
+
+       /**
+        * Get HipChat host
+        * @returns {*}
+        */
+        self.getHost = function(){
+          return options.host || self.defaults.host; 
         };
 
         /**
@@ -27,7 +37,7 @@ var Hipchat = function (options) {
          * @returns {*}
          */
         self.getUrl = function (config) {
-            return self.parse(self.defaults.url, _.assign({}, options, config || {}));
+            return self.parse(self.getHost() + self.defaults.url, _.assign({}, options, config || {}));
         };
 
         /**
